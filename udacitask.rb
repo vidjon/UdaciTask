@@ -45,3 +45,13 @@ list.add_multiple_items(
 {:description => "Buy clothes"})
 #Print the list
 list.print_list
+#Update completed status
+list.update_completed_status(1,3,5)
+#Print the list
+list.print_list
+#Print only items not finished
+list.print_list(false)
+#Remove Completed items
+list.remove_completed_items
+#Print the list
+list.print_list
