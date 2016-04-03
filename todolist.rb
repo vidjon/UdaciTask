@@ -44,11 +44,6 @@ class TodoList
         @items.delete_at(item_position-1)
     end
 
-    #Print the completed status of the item
-    def item_completed?(item_position)
-        puts @items.at(item_position-1).completed_status
-    end
-
     #Remove Completed Item
     def remove_completed_items
         @items = @items.select { |e| !e.completed_status }
@@ -71,7 +66,7 @@ class TodoList
         puts @title
         puts "-------------"
         if !@items.empty?
-            print_array = include_finished_item ? @items : @items.select { |e| !e.completed_status  }
+            print_array = include_finished_item ? @items : @items.select { |e| !e.item_completed?  }
             longest_item_length = print_array.max_by{ |x| x.description.length }.description.length
             print_array.each do |item|
                 puts item.print_item(@items.index(item)+1, longest_item_length)
@@ -98,7 +93,12 @@ class Item
         @completed_status = !@completed_status
     end
 
-    #Return a string with printable item 
+    #Return the completed status of the item
+    def item_completed?
+        @completed_status
+    end
+
+    #Return a string with printable item
     def print_item(item_number, white_space_length)
         sprintf "#{item_number}  - %-#{white_space_length}s  Completed: %s\tDue Date: %s \n", @description, @completed_status, @due_date
     end

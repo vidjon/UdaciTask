@@ -30,8 +30,6 @@ list.print_list
 list.title_name("My new Title of List")
 # Print the list
 list.print_list
-#CHeck if Item is completed
-list.item_completed?(1)
 #Remove Completed items
 list.remove_completed_items
 # Print the list
